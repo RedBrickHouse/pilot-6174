@@ -136,7 +136,7 @@ main{position:relative;z-index:1}
 /* footer */
 .foot{border-top:1px solid var(--line);padding:40px 24px 50px;text-align:center}
 .partners{display:flex;align-items:center;justify-content:center;gap:24px;margin:0 0 34px}
-.p-logo{height:38px;width:auto;opacity:.92}
+.p-logo{height:38px;width:auto}
 .p-sep{width:1px;height:32px;background:var(--line)}
 .p-dev{font-family:var(--disp);font-weight:700;font-stretch:125%;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
 @media (max-width:600px){.partners{gap:16px}.p-logo{height:30px}.p-dev{font-size:12px}}
