@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pilot 6174: 궤도 생존기 | Orbital Survival</title>
+<meta name="description" content="아폴로식 아날로그 조종석과 실제 궤도 역학을 바탕으로 열·전력·발각을 함께 관리하는 하드 SF 생존 시뮬레이션입니다. Pilot 6174: 궤도 생존기는 2027년 Steam에 출시될 예정입니다.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#060708">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,700;125,800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="stars" aria-hidden="true"></canvas>
+
+<aside class="fdai" id="fdai" aria-hidden="true" title="Reset attitude">
+  <svg class="fdai-svg" viewBox="0 0 100 100">
+    <defs>
+      <clipPath id="fdClip"><circle cx="50" cy="50" r="38"/></clipPath>
+      <radialGradient id="fdShade" cx="50%" cy="46%" r="56%"><stop offset="68%" stop-color="#000" stop-opacity="0"/><stop offset="100%" stop-color="#000" stop-opacity=".6"/></radialGradient>
+    </defs>
+    <circle cx="50" cy="50" r="46" class="fd-bezel"/>
+    <g class="fd-ticks"><line x1="50" y1="3.5" x2="50" y2="7" transform="rotate(-60 50 50)"/><line x1="50" y1="3.5" x2="50" y2="7" transform="rotate(-45 50 50)"/><line x1="50" y1="3.5" x2="50" y2="7" transform="rotate(-30 50 50)"/><line x1="50" y1="3.5" x2="50" y2="7" transform="rotate(-20 50 50)"/><line x1="50" y1="3.5" x2="50" y2="7" transform="rotate(-10 50 50)"/><line x1="50" y1="3.5" x2="50" y2="9" transform="rotate(0 50 50)"/><line x1="50" y1="3.5" x2="50" y2="7" transform="rotate(10 50 50)"/><line x1="50" y1="3.5" x2="50" y2="7" transform="rotate(20 50 50)"/><line x1="50" y1="3.5" x2="50" y2="7" transform="rotate(30 50 50)"/><line x1="50" y1="3.5" x2="50" y2="7" transform="rotate(45 50 50)"/><line x1="50" y1="3.5" x2="50" y2="7" transform="rotate(60 50 50)"/></g>
+    <g clip-path="url(#fdClip)">
+      <g id="fdBall">
+        <rect x="-80" y="-260" width="260" height="310" class="fd-sky"/>
+        <rect x="-80" y="50" width="260" height="310" class="fd-gnd"/>
+        <line x1="-80" y1="50" x2="180" y2="50" class="fd-horizon"/>
+        <g class="fd-ladder">
+          <line x1="41" y1="41" x2="59" y2="41"/><line x1="45" y1="32" x2="55" y2="32"/><line x1="41" y1="23" x2="59" y2="23"/><line x1="45" y1="14" x2="55" y2="14"/><line x1="41" y1="5" x2="59" y2="5"/>
+          <line x1="41" y1="59" x2="59" y2="59"/><line x1="45" y1="68" x2="55" y2="68"/><line x1="41" y1="77" x2="59" y2="77"/><line x1="45" y1="86" x2="55" y2="86"/><line x1="41" y1="95" x2="59" y2="95"/>
+        </g>
+      </g>
+      <circle cx="50" cy="50" r="38" fill="url(#fdShade)"/>
+    </g>
+    <g class="fd-ac"><line x1="24" y1="50" x2="41" y2="50"/><line x1="59" y1="50" x2="76" y2="50"/><line x1="50" y1="43" x2="50" y2="50"/><circle cx="50" cy="50" r="1.7"/></g>
+    <path d="M50,6 l-3,5 h6 z" class="fd-roll"/>
+  </svg>
+  <div class="fd-read"><span>PITCH</span><b id="fdPitch">+30</b></div>
+  <div class="fd-read"><span>LOG</span><b id="fdLog">00</b></div>
+</aside>
+
+<header class="top">
+  <a class="top-brand" href="#">PILOT 6174</a>
+  <nav class="top-links">
+    <a href="#log">MISSION LOG</a>
+    <a href="#transmission">TRAILER</a>
+    <a href="#spec">SPEC</a>
+    <a class="ext" href="https://store.steampowered.com/app/4262800/" target="_blank" rel="noopener">[ STEAM ]</a>
+  </nav>
+</header>
+
+<section class="hero" id="hero" data-log="00">
+  <span class="mark tr" aria-hidden="true"></span>
+  <span class="mark bl" aria-hidden="true"></span><span class="mark br" aria-hidden="true"></span>
+
+  <svg class="orbit" viewBox="0 0 1000 400" aria-hidden="true">
+    <ellipse cx="500" cy="200" rx="470" ry="150"/>
+    <ellipse cx="500" cy="200" rx="300" ry="96" class="inner"/>
+    <circle r="4" class="node"><animateMotion dur="34s" repeatCount="indefinite" path="M30,200 a470,150 0 1,0 940,0 a470,150 0 1,0 -940,0"/></circle>
+    <circle r="2.4" class="node2"><animateMotion dur="19s" begin="-7s" repeatCount="indefinite" path="M200,200 a300,96 0 1,1 600,0 a300,96 0 1,1 -600,0"/></circle>
+  </svg>
+  <p class="eyebrow">KOTGE ASTROWORKS PRESENTS</p>
+  <h1 class="logo">
+    <span class="word">PILOT</span>
+    <img class="digits" src="img/digits-6174.svg" alt="6174" width="300" height="100">
+  </h1>
+  <p class="sub"><span class="ko">궤도 생존기</span><span class="en">ORBITAL SURVIVAL</span></p>
+  <p class="tag">1970년대 아날로그 조종석으로 무너진 우주를 건넙니다. <br>버튼 하나를 잘못 눌러도 돌아오지 못합니다.</p>
+
+  <div class="readouts" aria-hidden="true">
+    <div class="ro"><span class="lbl">MISSION TIMER</span><span class="val" id="met">000:00:00</span></div>
+    <div class="ro"><span class="lbl">&Delta;v</span><span class="val">27162.50</span></div>
+    <div class="ro"><span class="lbl">VERB</span><span class="val" id="verb">16</span><span class="lbl">NOUN</span><span class="val" id="noun">38</span></div>
+  </div>
+
+  <div class="cta">
+    <a class="btn" href="https://store.steampowered.com/app/4262800/" target="_blank" rel="noopener">[ WISHLIST ON STEAM ]</a>
+    <a class="btn ghost" href="#transmission">[ WATCH TRAILER ]</a>
+  </div>
+  <p class="release">COMING 2027 &middot; WINDOWS / MACOS / LINUX</p>
+  <a class="scroll" href="#log" aria-label="아래로">ENTR<span></span></a>
+</section>
+
+<main id="log">
+
+  <article class="entry reveal" data-log="01">
+    <header class="entry-head">
+      <span class="num">01</span>
+      <h2><span class="en">BACK TO ANALOG</span><span class="ko">모든 조작은 손으로</span></h2>
+    </header>
+    <div class="entry-body">
+      <p>δQ는 스스로 생각하는 기계라면 무엇이든 오염시킵니다. 똑똑한 장비일수록 먼저 당했고, 인류는 결국 투박한 옛 기술로 돌아갔습니다.</p>
+      <p>1970년대 아폴로 사령선을 닮은 조종석에서 토글 스위치를 올리고 내리고, 버튼을 누르며 계기와 경고등을 직접 확인해야 합니다. 컴퓨터 명령도 아폴로처럼 VERB와 NOUN에 각각 두 자리 숫자 코드를 입력해 실행합니다.</p>
+    </div>
+    <figure class="plate">
+      <div class="frame"><img src="img/dsky.jpg" alt="DSKY 키패드와 디스플레이" loading="lazy" width="1600" height="900"></div>
+      <figcaption><span>PLATE 01</span><span>DSKY &middot; VERB 25 NOUN 04</span><span>LH2 TANK, MODEL A</span></figcaption>
+    </figure>
+  </article>
+
+  <div class="strip reveal" aria-hidden="true">
+    <div class="clip"><video autoplay muted loop playsinline preload="metadata" poster="media/clip1.poster.avif"><source src="media/clip1.webm" type="video/webm"><source src="media/clip1.mp4" type="video/mp4"></video><span>ORBIT DISPLAY</span></div>
+    <div class="clip"><video autoplay muted loop playsinline preload="metadata" poster="media/clip3.poster.avif"><source src="media/clip3.webm" type="video/webm"><source src="media/clip3.mp4" type="video/mp4"></video><span>SYSTEM MAP</span></div>
+  </div>
+
+  <article class="entry reveal" data-log="02">
+    <header class="entry-head">
+      <span class="num">02</span>
+      <h2><span class="en">NEWTONIAN NAVIGATION</span><span class="ko">우주에서는 직선으로 갈 수 없습니다</span></h2>
+    </header>
+    <div class="entry-body">
+      <p>목적지만 보고 엔진을 켜면 연료가 먼저 바닥나거나, 정거장을 지나쳐 우주를 떠돌게 됩니다. 궤도를 읽지 못하면 출발은 할 수 있어도 도착할 수 없습니다.</p>
+      <p>상대 궤도와 위상을 맞추고, 중력 도움을 받아 ΔV를 아끼며, 정거장과 만날 궤도를 계산해야 합니다.</p>
+      <p>행성 사이를 이동하는 데는 수십 일에서 수개월이 걸리고, 목적지에 따라 수백 년이 필요할 때도 있습니다. 동면으로 긴 시간을 건너뛸 수 있지만, 그동안에도 δQ의 추적은 멈추지 않습니다.</p>
+    </div>
+    <figure class="plate">
+      <div class="frame"><img src="img/panel-main.jpg" alt="메인 패널, 일반 조명" loading="lazy" width="1600" height="900"></div>
+      <figcaption><span>PLATE 02</span><span>MAIN PANEL &middot; NORMAL LIGHTING</span><span>&Delta;v 27162.50</span></figcaption>
+    </figure>
+  </article>
+
+  <article class="entry reveal" data-log="03">
+    <header class="entry-head">
+      <span class="num">03</span>
+      <h2><span class="en">MANAGEMENT WARFARE</span><span class="ko">식힐 것인가, 숨을 것인가</span></h2>
+    </header>
+    <div class="entry-body">
+      <p>장비에 동력을 공급할수록 선내에 열이 쌓입니다. 라디에이터를 펼치면 식힐 수 있지만, 레이더에 잡히는 면적도 커져 δQ에게 들킬 가능성이 높아집니다.</p>
+      <p>δQ 기체가 요격하러 오면 라디에이터를 접고 숨을지, 레일건을 충전해 맞서 싸울지, 엔진을 켜고 피할지 결정해야 합니다.</p>
+      <p>항상 통하는 답은 없습니다. 남은 전력과 선체 온도, 적과의 거리까지 따져 그 순간 어떤 위험을 감수할지 결정해야 합니다.</p>
+    </div>
+    <figure class="plate">
+      <div class="frame"><img src="img/panel-red.jpg" alt="메인 패널, 비상 조명" loading="lazy" width="1600" height="900"></div>
+      <figcaption><span>PLATE 03</span><span>MAIN PANEL &middot; EMERGENCY LIGHTING</span><span>THERMAL CRITICAL</span></figcaption>
+    </figure>
+  </article>
+
+  <div class="strip reveal" aria-hidden="true">
+    <div class="clip"><video autoplay muted loop playsinline preload="metadata" poster="media/clip4.poster.avif"><source src="media/clip4.webm" type="video/webm"><source src="media/clip4.mp4" type="video/mp4"></video><span>GEN / BAT / HEAT</span></div>
+    <div class="clip"><video autoplay muted loop playsinline preload="metadata" poster="media/clip2.poster.avif"><source src="media/clip2.webm" type="video/webm"><source src="media/clip2.mp4" type="video/mp4"></video><span>VERB &middot; NOUN</span></div>
+  </div>
+
+  <article class="entry reveal" data-log="04">
+    <header class="entry-head">
+      <span class="num">04</span>
+      <h2><span class="en">A BROKEN UNIVERSE</span><span class="ko">무너진 문명, 매번 달라지는 항로</span></h2>
+    </header>
+    <div class="entry-body">
+      <p>인류는 한때 게이트웨이를 통해 은하를 오갔지만, δQ가 문명도 은하로 통하는 길도 무너뜨렸습니다. 남아 있는 단서는 옌도르 성계에서 날아온 신호뿐입니다.</p>
+      <p>게이트웨이를 통과할 때마다 처음 보는 성계가 나타납니다. 기이한 행성과 아노말리, 버려진 우주선이 나타나는 위치와 조합도 매번 달라집니다.</p>
+      <p>연료가 바닥나거나 위성에 추락하거나 아노말리에 휘말리는 순간, 항해는 끝납니다. 불러올 세이브도, 이어서 시작할 체크포인트도 없습니다.</p>
+    </div>
+    <figure class="plate">
+      <div class="frame"><img src="img/planet-scan.jpg" alt="천체 스캔 디스플레이" loading="lazy" width="1600" height="900"></div>
+      <figcaption><span>PLATE 04</span><span>BODY SCAN &middot; DESIG -4815A</span><span>MASS 4.861E24</span></figcaption>
+    </figure>
+  </article>
+
+  <section class="transmission reveal" id="transmission" data-log="TX">
+    <header class="entry-head">
+      <span class="num">TX</span>
+      <h2><span class="en">TRANSMISSION</span><span class="ko">공식 게임플레이 트레일러</span></h2>
+    </header>
+    <div class="yt" data-id="-RiPo-RlyiM">
+      <button class="yt-play" type="button" aria-label="트레일러 재생">
+        <img src="img/trailer-thumb.jpg" alt="" width="1280" height="720" loading="lazy">
+        <span class="yt-btn">[ PLAY ]</span>
+      </button>
+    </div>
+  </section>
+
+  <div class="duo reveal" data-log="05">
+    <figure class="plate small">
+      <div class="frame"><img src="img/switches.jpg" alt="토글 스위치 클로즈업" loading="lazy" width="800" height="450"></div>
+      <figcaption><span>PLATE 05</span><span>HOLD: PROGRADE / RETRO</span></figcaption>
+    </figure>
+    <figure class="plate small">
+      <div class="frame"><img src="img/radiator-panel.jpg" alt="라디에이터 패널" loading="lazy" width="800" height="450"></div>
+      <figcaption><span>PLATE 06</span><span>RADIATORS 1&ndash;4 &middot; NET POWER</span></figcaption>
+    </figure>
+  </div>
+
+  <section class="spec reveal" id="spec" data-log="SP">
+    <dl>
+      <div><dt>TITLE</dt><dd>Pilot 6174: Orbital Survival<br>궤도 생존기</dd></div>
+      <div><dt>GENRE</dt><dd>하드 SF 생존 시뮬레이션 &middot; 전략 &middot; 로그라이크</dd></div>
+      <div><dt>DEVELOPER</dt><dd>Kotge Astroworks Inc.</dd></div>
+      <div><dt>PUBLISHER</dt><dd>RED BRICK HOUSE</dd></div>
+      <div><dt>RELEASE</dt><dd>2027</dd></div>
+      <div><dt>PLATFORM</dt><dd>Steam &middot; Windows / macOS / Linux</dd></div>
+      <div><dt>PLAYERS</dt><dd>싱글 플레이어</dd></div>
+      <div><dt>LANGUAGES</dt><dd>한국어, English, 日本語, 简体中文, Deutsch, Français, Русский, Українська, Polski, Português (Brasil)</dd></div>
+      <div><dt>MIN SPEC</dt><dd>Windows 10 &middot; Intel Core i3 &middot; 8 GB RAM &middot; DirectX 11 &middot; 2 GB</dd></div>
+    </dl>
+  </section>
+
+  <section class="final reveal" data-log="GO">
+    <p class="final-line">옌도르에 닿을 기회는 단 한 번뿐입니다.</p>
+    <a class="btn big" href="https://store.steampowered.com/app/4262800/" target="_blank" rel="noopener">[ WISHLIST ON STEAM ]</a>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <nav class="foot-links">
+    <a href="https://store.steampowered.com/app/4262800/" target="_blank" rel="noopener">[ Steam ]</a>
+    <a href="https://discord.gg/hRxprbqTuw" target="_blank" rel="noopener">[ Discord ]</a>
+    <a href="https://www.youtube.com/@KotgeAstroworks" target="_blank" rel="noopener">[ YouTube ]</a>
+    <a href="https://www.instagram.com/kotgeastroworks/" target="_blank" rel="noopener">[ Instagram ]</a>
+  </nav>
+  <p class="eot">END OF TRANSMISSION</p>
+  <p class="legal">&copy; 2026 Kotge Astroworks Inc. All rights reserved. Published by RED&nbsp;BRICK&nbsp;HOUSE.<br>Steam and the Steam logo are trademarks of Valve Corporation.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
