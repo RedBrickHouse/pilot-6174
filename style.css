@@ -138,8 +138,9 @@ main{position:relative;z-index:1}
 .partners{display:flex;align-items:center;justify-content:center;gap:24px;margin:0 0 34px}
 .p-logo{height:38px;width:auto}
 .p-sep{width:1px;height:32px;background:var(--line)}
+.p-dev-logo{height:40px;width:auto}
 .p-dev{font-family:var(--disp);font-weight:700;font-stretch:125%;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
-@media (max-width:600px){.partners{gap:16px}.p-logo{height:30px}.p-dev{font-size:12px}}
+@media (max-width:600px){.partners{gap:16px}.p-logo{height:30px}.p-dev{font-size:12px}.p-dev-logo{height:32px}}
 .foot-links{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;font-family:var(--mono);font-size:12px;letter-spacing:.08em}
 .foot-links a{color:var(--mute);transition:color .2s}
 .foot-links a:hover{color:var(--green)}
