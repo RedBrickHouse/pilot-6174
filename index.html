@@ -49,6 +49,7 @@
     <a href="#log">MISSION LOG</a>
     <a href="#transmission">TRAILER</a>
     <a href="#spec">SPEC</a>
+    <span class="lang-switch" role="group" aria-label="Language"><button type="button" class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button><span class="lang-sep">/</span><button type="button" class="lang-btn" data-lang="ko" onclick="setLang('ko')">KR</button></span>
     <a class="ext" href="https://store.steampowered.com/app/4262800/" target="_blank" rel="noopener">[ STEAM ]</a>
   </nav>
 </header>
@@ -68,8 +69,8 @@
     <span class="word">PILOT</span>
     <img class="digits" src="img/digits-6174.svg" alt="6174" width="300" height="100">
   </h1>
-  <p class="sub"><span class="ko">궤도 생존기</span><span class="en">ORBITAL SURVIVAL</span></p>
-  <p class="tag">1970년대 아날로그 조종석으로 무너진 우주를 건넙니다. <br>버튼 하나만 잘못 눌러도 돌아올 수 없습니다.</p>
+  <p class="sub"><span class="ko" data-i18n="subKo">궤도 생존기</span><span class="en" data-i18n="subEn">ORBITAL SURVIVAL</span></p>
+  <p class="tag" data-i18n="tag">1970년대 아날로그 조종석으로 무너진 우주를 건넙니다. <br>버튼 하나만 잘못 눌러도 돌아올 수 없습니다.</p>
 
   <div class="readouts" aria-hidden="true">
     <div class="ro"><span class="lbl">MISSION TIMER</span><span class="val" id="met">000:00:00</span></div>
@@ -82,7 +83,7 @@
     <a class="btn ghost" href="#transmission">[ WATCH TRAILER ]</a>
   </div>
   <p class="release">COMING 2027</p>
-  <a class="scroll" href="#log" aria-label="아래로">ENTR<span></span></a>
+  <a class="scroll" href="#log" aria-label="아래로" data-i18n-aria="scroll">ENTR<span></span></a>
 </section>
 
 <main id="log">
@@ -90,11 +91,11 @@
   <article class="entry reveal" data-log="01">
     <header class="entry-head">
       <span class="num">01</span>
-      <h2><span class="en">BACK TO ANALOG</span><span class="ko">모든 조작은 손으로</span></h2>
+      <h2><span class="en">BACK TO ANALOG</span><span class="ko" data-i18n="h01">모든 조작은 손으로</span></h2>
     </header>
     <div class="entry-body">
-      <p>델타Q는 스스로 생각하는 기계라면 무엇이든 오염시킵니다. 똑똑한 장비일수록 먼저 당했고, 인류는 결국 투박한 옛 기술로 돌아갔습니다.</p>
-      <p>1970년대 아폴로 사령선을 닮은 조종석에서 토글 스위치를 올리고 내리고, 버튼을 누르며 계기와 경고등을 직접 확인해야 합니다. 컴퓨터 명령도 아폴로처럼 VERB와 NOUN에 각각 두 자리 숫자 코드를 입력해 실행합니다.</p>
+      <p data-i18n="p1">델타Q는 스스로 생각하는 기계라면 무엇이든 오염시킵니다. 똑똑한 장비일수록 먼저 당했고, 인류는 결국 투박한 옛 기술로 돌아갔습니다.</p>
+      <p data-i18n="p2">1970년대 아폴로 사령선을 닮은 조종석에서 토글 스위치를 올리고 내리고, 버튼을 누르며 계기와 경고등을 직접 확인해야 합니다. 컴퓨터 명령도 아폴로처럼 VERB와 NOUN에 각각 두 자리 숫자 코드를 입력해 실행합니다.</p>
     </div>
     <figure class="plate">
       <div class="frame"><img src="img/dsky.jpg" alt="DSKY 키패드와 디스플레이" loading="lazy" width="1600" height="900"></div>
@@ -110,12 +111,12 @@
   <article class="entry reveal" data-log="02">
     <header class="entry-head">
       <span class="num">02</span>
-      <h2><span class="en">NEWTONIAN NAVIGATION</span><span class="ko">우주에서는 직선으로 갈 수 없습니다</span></h2>
+      <h2><span class="en">NEWTONIAN NAVIGATION</span><span class="ko" data-i18n="h02">우주에서는 직선으로 갈 수 없습니다</span></h2>
     </header>
     <div class="entry-body">
-      <p>목적지만 보고 엔진을 켜면 연료가 먼저 바닥나거나, 정거장을 지나쳐 우주를 떠돌게 됩니다. 궤도를 읽지 못하면 출발은 할 수 있어도 도착할 수 없습니다.</p>
-      <p>상대 궤도와 위상을 맞추고, 중력 도움을 받아 ΔV를 아끼며, 정거장과 만날 궤도를 계산해야 합니다.</p>
-      <p>행성 사이를 이동하는 데는 수십 일에서 수개월이 걸리고, 목적지에 따라 수백 년이 필요할 때도 있습니다. 동면으로 긴 시간을 건너뛸 수 있지만, 그동안에도 델타Q의 추적은 멈추지 않습니다.</p>
+      <p data-i18n="p3">목적지만 보고 엔진을 켜면 연료가 먼저 바닥나거나, 정거장을 지나쳐 우주를 떠돌게 됩니다. 궤도를 읽지 못하면 출발은 할 수 있어도 도착할 수 없습니다.</p>
+      <p data-i18n="p4">상대 궤도와 위상을 맞추고, 중력 도움을 받아 ΔV를 아끼며, 정거장과 만날 궤도를 계산해야 합니다.</p>
+      <p data-i18n="p5">행성 사이를 이동하는 데는 수십 일에서 수개월이 걸리고, 목적지에 따라 수백 년이 필요할 때도 있습니다. 동면으로 긴 시간을 건너뛸 수 있지만, 그동안에도 델타Q의 추적은 멈추지 않습니다.</p>
     </div>
     <figure class="plate">
       <div class="frame"><img src="img/panel-main.jpg" alt="메인 패널, 일반 조명" loading="lazy" width="1600" height="900"></div>
@@ -126,12 +127,12 @@
   <article class="entry reveal" data-log="03">
     <header class="entry-head">
       <span class="num">03</span>
-      <h2><span class="en">MANAGEMENT WARFARE</span><span class="ko">식힐 것인가, 숨을 것인가</span></h2>
+      <h2><span class="en">MANAGEMENT WARFARE</span><span class="ko" data-i18n="h03">식힐 것인가, 숨을 것인가</span></h2>
     </header>
     <div class="entry-body">
-      <p>장비에 동력을 공급할수록 선내에 열이 쌓입니다. 라디에이터를 펼치면 식힐 수 있지만, 레이더에 잡히는 면적도 커져 델타Q에게 들킬 가능성이 높아집니다.</p>
-      <p>델타Q 기체가 요격하러 오면 라디에이터를 접고 숨을지, 레일건을 충전해 맞서 싸울지, 엔진을 켜고 피할지 결정해야 합니다.</p>
-      <p>항상 통하는 답은 없습니다. 남은 전력과 선체 온도, 적과의 거리까지 따져 그 순간 어떤 위험을 감수할지 결정해야 합니다.</p>
+      <p data-i18n="p6">장비에 동력을 공급할수록 선내에 열이 쌓입니다. 라디에이터를 펼치면 식힐 수 있지만, 레이더에 잡히는 면적도 커져 델타Q에게 들킬 가능성이 높아집니다.</p>
+      <p data-i18n="p7">델타Q 기체가 요격하러 오면 라디에이터를 접고 숨을지, 레일건을 충전해 맞서 싸울지, 엔진을 켜고 피할지 결정해야 합니다.</p>
+      <p data-i18n="p8">항상 통하는 답은 없습니다. 남은 전력과 선체 온도, 적과의 거리까지 따져 그 순간 어떤 위험을 감수할지 결정해야 합니다.</p>
     </div>
     <figure class="plate">
       <div class="frame"><img src="img/panel-red.jpg" alt="메인 패널, 비상 조명" loading="lazy" width="1600" height="900"></div>
@@ -147,12 +148,12 @@
   <article class="entry reveal" data-log="04">
     <header class="entry-head">
       <span class="num">04</span>
-      <h2><span class="en">A BROKEN UNIVERSE</span><span class="ko">무너진 문명, 매번 달라지는 항로</span></h2>
+      <h2><span class="en">A BROKEN UNIVERSE</span><span class="ko" data-i18n="h04">무너진 문명, 매번 달라지는 항로</span></h2>
     </header>
     <div class="entry-body">
-      <p>인류는 한때 게이트웨이를 통해 은하를 오갔지만, 델타Q가 문명도 은하로 통하는 길도 무너뜨렸습니다. 남아 있는 단서는 옌도르 성계에서 날아온 신호뿐입니다.</p>
-      <p>게이트웨이를 통과할 때마다 처음 보는 성계가 나타납니다. 기이한 행성과 아노말리, 버려진 우주선이 나타나는 위치와 조합도 매번 달라집니다.</p>
-      <p>연료가 바닥나거나 위성에 추락하거나 아노말리에 휘말리는 순간, 항해는 끝납니다. 불러올 세이브도, 이어서 시작할 체크포인트도 없습니다.</p>
+      <p data-i18n="p9">인류는 한때 게이트웨이를 통해 은하를 오갔지만, 델타Q가 문명도 은하로 통하는 길도 무너뜨렸습니다. 남아 있는 단서는 옌도르 성계에서 날아온 신호뿐입니다.</p>
+      <p data-i18n="p10">게이트웨이를 통과할 때마다 처음 보는 성계가 나타납니다. 기이한 행성과 아노말리, 버려진 우주선이 나타나는 위치와 조합도 매번 달라집니다.</p>
+      <p data-i18n="p11">연료가 바닥나거나 위성에 추락하거나 아노말리에 휘말리는 순간, 항해는 끝납니다. 불러올 세이브도, 이어서 시작할 체크포인트도 없습니다.</p>
     </div>
     <figure class="plate">
       <div class="frame"><img src="img/planet-scan.jpg" alt="천체 스캔 디스플레이" loading="lazy" width="1600" height="900"></div>
@@ -163,10 +164,10 @@
   <section class="transmission reveal" id="transmission" data-log="TX">
     <header class="entry-head">
       <span class="num">TX</span>
-      <h2><span class="en">TRANSMISSION</span><span class="ko">공식 게임플레이 트레일러</span></h2>
+      <h2><span class="en">TRANSMISSION</span><span class="ko" data-i18n="hTx">공식 게임플레이 트레일러</span></h2>
     </header>
     <div class="yt" data-id="-RiPo-RlyiM">
-      <button class="yt-play" type="button" aria-label="트레일러 재생">
+      <button class="yt-play" type="button" aria-label="트레일러 재생" data-i18n-aria="play">
         <img src="img/trailer-thumb.jpg" alt="" width="1280" height="720" loading="lazy">
         <span class="yt-btn">[ PLAY ]</span>
       </button>
@@ -186,19 +187,19 @@
 
   <section class="spec reveal" id="spec" data-log="SP">
     <dl>
-      <div><dt>TITLE</dt><dd>Pilot 6174: Orbital Survival<br>궤도 생존기</dd></div>
-      <div><dt>GENRE</dt><dd>하드 SF 생존 시뮬레이션 &middot; 전략 &middot; 로그라이크</dd></div>
+      <div><dt>TITLE</dt><dd data-i18n="specTitle">Pilot 6174: Orbital Survival<br>궤도 생존기</dd></div>
+      <div><dt>GENRE</dt><dd data-i18n="specGenre">하드 SF 생존 시뮬레이션 &middot; 전략 &middot; 로그라이크</dd></div>
       <div><dt>DEVELOPER</dt><dd>Kotge Astroworks Inc.</dd></div>
       <div><dt>RELEASE</dt><dd>2027</dd></div>
       <div><dt>PLATFORM</dt><dd>Steam &middot; Windows / macOS / Linux</dd></div>
-      <div><dt>PLAYERS</dt><dd>싱글 플레이어</dd></div>
-      <div><dt>LANGUAGES</dt><dd>한국어, English, 日本語, 简体中文, Deutsch, Français, Русский, Українська, Polski, Português (Brasil)</dd></div>
+      <div><dt>PLAYERS</dt><dd data-i18n="specPlayers">싱글 플레이어</dd></div>
+      <div><dt>LANGUAGES</dt><dd data-i18n="specLangs">한국어, English, 日本語, 简体中文, Deutsch, Français, Русский, Українська, Polski, Português (Brasil)</dd></div>
       <div><dt>MIN SPEC</dt><dd>Windows 10 &middot; Intel Core i3 &middot; 8 GB RAM &middot; DirectX 11 &middot; 2 GB</dd></div>
     </dl>
   </section>
 
   <section class="final reveal" data-log="GO">
-    <p class="final-line">옌도르에 닿을 기회는 단 한 번뿐입니다.</p>
+    <p class="final-line" data-i18n="finalLine">옌도르에 닿을 기회는 단 한 번뿐입니다.</p>
     <a class="btn big" href="https://store.steampowered.com/app/4262800/" target="_blank" rel="noopener">[ WISHLIST ON STEAM ]</a>
   </section>
 
@@ -215,6 +216,7 @@
   <p class="legal">&copy; 2026 Kotge Astroworks Inc. Published by RED BRICK HOUSE. All rights reserved.</p>
 </footer>
 
+<script src="i18n.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

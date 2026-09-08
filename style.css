@@ -180,3 +180,10 @@ main{position:relative;z-index:1}
 }
 
 @media (max-width:600px){.partners{flex-direction:column;gap:14px}.p-sep{width:64px;height:1px}}
+
+/* language switch */
+.lang-switch{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:12px;letter-spacing:.12em}
+.lang-btn{background:none;border:0;padding:4px 2px;color:var(--mute);font:inherit;letter-spacing:inherit;cursor:pointer;border-bottom:1px solid transparent;transition:.2s}
+.lang-btn:hover{color:#fff}
+.lang-btn.active{color:var(--green);border-bottom-color:var(--green)}
+.lang-sep{color:#3a413a}
